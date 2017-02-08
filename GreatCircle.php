@@ -37,9 +37,9 @@ class GreatCircle {
         $this->g = 2.0 * asin(sqrt($z));
         
         if ($this->g == pi()) {
-            throw new Error('it appears ' . $start->view() . ' and ' . $end->view() . " are 'antipodal', e.g diametrically opposite, thus there is no single route but rather infinite");
+            throw new \Error('it appears ' . $start->view() . ' and ' . $end->view() . " are 'antipodal', e.g diametrically opposite, thus there is no single route but rather infinite");
         } elseif (is_nan($this->g)) {
-            throw new Error('could not calculate great circle between ' . $start . ' and ' . $end);
+            throw new \Error('could not calculate great circle between ' . $start . ' and ' . $end);
         }
     }
     
