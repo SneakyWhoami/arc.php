@@ -20,11 +20,11 @@ class Arc {
     public function json() {
         if (count($this->geometries) <= 0) {
             return array('geometry'=> array( 'type' => 'LineString', 'coordinates'=> null ),
-            'type'=> 'Feature', 'properties'=> $this->properties
+            'type'=> 'Feature', 'properties'=> (object) $this->properties
             );
         } elseif (count($this->geometries) == 1) {
             return array('geometry'=> array( 'type' => 'LineString', 'coordinates'=> $this->geometries[0]->coords ),
-            'type'=> 'Feature', 'properties'=> $this->properties
+            'type'=> 'Feature', 'properties'=> (object) $this->properties
             );
         } else {
             $multiline = array();
@@ -32,7 +32,7 @@ class Arc {
                 $multiline[] = $this->geometries[$i]->coords;
             }
             return array('geometry'=> array( 'type'=> 'MultiLineString', 'coordinates'=> $multiline ),
-            'type'=> 'Feature', 'properties'=> $this->properties
+            'type'=> 'Feature', 'properties'=> (object) $this->properties
             );
         }
     }
